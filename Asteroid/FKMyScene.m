@@ -23,9 +23,10 @@ const float Margin = 20.0f;
         
         self.backgroundColor = [SKColor colorWithRed:0 green:0 blue:0 alpha:1.0];
         
-        self.player = [SKSpriteNode spriteNodeWithImageNamed:@"ship"];
-        self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        [self addChild:self.player];
+        //self.player = [SKSpriteNode spriteNodeWithImageNamed:@"ship"];
+        //self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        //[self addChild:self.player];
+        [self addShip];
     }
     return self;
 }
@@ -79,45 +80,37 @@ const float Margin = 20.0f;
         SKAction *action = [SKAction rotateToAngle:angle-M_PI_2 duration:.1];
         
         [self.player runAction:action];
-        [self attemptMissileLaunch];
+        [self.player fireShot];
     }
 }
 
-- (void)attemptMissileLaunch {
-    /* Fire a missile if there's one ready */
-    
-    //CFTimeInterval timeSinceLastFired = currentTime - self.timeLastFiredMissile;
-    //if (timeSinceLastFired > firingInterval)
-    //{
-        //self.timeLastFiredMissile = currentTime;
-        
-        CGFloat shipDirection = self.player.zRotation + M_PI_2;
-        
-        //  Get our main scene
-        //JRWGameScene *scene = (JRWGameScene *) self.scene;
-        
-        SKNode *missile = [self addMissile];
-        missile.position = CGPointMake(self.player.position.x + 30*cosf(shipDirection),
-                                       self.player.position.y + 30*sinf(shipDirection));
-        
-        missile.name = @"missile";
-        
-        //  Point the missle the same direction as the ship
-        missile.zRotation = self.player.zRotation;
-        
-        [self addChild:missile];
-        
-        // Just using a constant speed on the missiles
-        missile.physicsBody.velocity = CGVectorMake(200*cosf(shipDirection),
-                                                    200*sinf(shipDirection));
-        
-        //[self runAction:self.missileSound];
-        
-        
-    }
 
-- (SKNode*) addMissile
-{
+
+- (void)addShip {
+    if (self.player) {
+        return;
+    }
+    
+    self.player = [FKShipNode newShipNode];
+    self.player.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        
+        //  With no transsition just add the ship
+        //if (!useTransition) {
+            [self addChild:self.player];//.playObjects addChild:self.player];
+        //} else {
+            //  Transition to drop in a new ship
+         //   [self.player setScale:3.0];
+         //   self.player.alpha = 0;
+         //   SKAction *zoom = [SKAction  scaleTo:1.0 duration:1.0];
+         //   SKAction *fadeIn = [SKAction fadeInWithDuration:1.0];
+         //   SKAction *dropIn = [SKAction group:@[zoom, fadeIn]];
+         //   [self.playObjects addChild:self.ship];
+         //   [self.ship runAction:dropIn];
+        //}
+    //}
+}
+
+- (SKNode*) addMissile {
     //  Load the texture
     SKSpriteNode *missile = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bullet"]];
     
@@ -145,15 +138,6 @@ const float Margin = 20.0f;
     //missile.physicsBody.categoryBitMask = RBCmissileCategory;
     missile.physicsBody.collisionBitMask = 0;
     missile.physicsBody.contactTestBitMask = 0;
-    
-    
-#if SHOW_PHYSICS_OVERLAY
-    SKShapeNode *shipOverlayShape = [[SKShapeNode alloc] init];
-    shipOverlayShape.path = path;
-    shipOverlayShape.strokeColor = [SKColor clearColor];
-    shipOverlayShape.fillColor = [SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
-    [missile addChild:shipOverlayShape];
-#endif
     
     //  Release the path so we don't leak
     CGPathRelease(path);

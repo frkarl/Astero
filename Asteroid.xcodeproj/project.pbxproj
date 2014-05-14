@@ -28,6 +28,7 @@
 		08780791191FA7B000A355A7 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780790191FA7B000A355A7 /* ship.png */; };
 		087807941920119400A355A7 /* FKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 087807931920119400A355A7 /* FKEntity.m */; };
 		08780796192144AD00A355A7 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780795192144AD00A355A7 /* bullet.png */; };
+		08F4307C192412DB00932E9F /* FKShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F4307B192412DB00932E9F /* FKShipNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		087807921920119300A355A7 /* FKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKEntity.h; sourceTree = "<group>"; };
 		087807931920119400A355A7 /* FKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKEntity.m; sourceTree = "<group>"; };
 		08780795192144AD00A355A7 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		08F4307A192412DB00932E9F /* FKShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKShipNode.h; sourceTree = "<group>"; };
+		08F4307B192412DB00932E9F /* FKShipNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKShipNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,7 @@
 		08780752191ED04300A355A7 /* Asteroid */ = {
 			isa = PBXGroup;
 			children = (
+				08F430791924123500932E9F /* SpritesNodes */,
 				0878075B191ED04300A355A7 /* FKAppDelegate.h */,
 				0878075C191ED04300A355A7 /* FKAppDelegate.m */,
 				0878075E191ED04300A355A7 /* Main_iPhone.storyboard */,
@@ -177,6 +181,15 @@
 				0878077C191ED04300A355A7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08F430791924123500932E9F /* SpritesNodes */ = {
+			isa = PBXGroup;
+			children = (
+				08F4307A192412DB00932E9F /* FKShipNode.h */,
+				08F4307B192412DB00932E9F /* FKShipNode.m */,
+			);
+			name = SpritesNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +312,7 @@
 			files = (
 				08780759191ED04300A355A7 /* main.m in Sources */,
 				0878075D191ED04300A355A7 /* FKAppDelegate.m in Sources */,
+				08F4307C192412DB00932E9F /* FKShipNode.m in Sources */,
 				08780766191ED04300A355A7 /* FKViewController.m in Sources */,
 				08780769191ED04300A355A7 /* FKMyScene.m in Sources */,
 				087807941920119400A355A7 /* FKEntity.m in Sources */,
@@ -554,6 +568,7 @@
 				08780785191ED04300A355A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08780786191ED04300A355A7 /* Build configuration list for PBXNativeTarget "AsteroidTests" */ = {
 			isa = XCConfigurationList;
@@ -562,6 +577,7 @@
 				08780788191ED04300A355A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
