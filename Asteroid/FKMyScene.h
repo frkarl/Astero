@@ -8,6 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface FKMyScene : SKScene
+@interface FKMyScene : SKScene <SKPhysicsContactDelegate>
+{
+    CGRect screenRect;
+    CGFloat screenHeight;
+    CGFloat screenWidth;
+}
+@property (nonatomic) SKSpriteNode *player;
 
 @end

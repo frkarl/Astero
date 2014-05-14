@@ -18,13 +18,16 @@
 		08780763191ED04300A355A7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08780761191ED04300A355A7 /* Main_iPad.storyboard */; };
 		08780766191ED04300A355A7 /* FKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08780765191ED04300A355A7 /* FKViewController.m */; };
 		08780769191ED04300A355A7 /* FKMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 08780768191ED04300A355A7 /* FKMyScene.m */; };
-		0878076B191ED04300A355A7 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 0878076A191ED04300A355A7 /* Spaceship.png */; };
 		0878076D191ED04300A355A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0878076C191ED04300A355A7 /* Images.xcassets */; };
 		08780774191ED04300A355A7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08780773191ED04300A355A7 /* XCTest.framework */; };
 		08780775191ED04300A355A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0878074A191ED04300A355A7 /* Foundation.framework */; };
 		08780776191ED04300A355A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0878074E191ED04300A355A7 /* UIKit.framework */; };
 		0878077E191ED04300A355A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0878077C191ED04300A355A7 /* InfoPlist.strings */; };
-		08780780191ED04300A355A7 /* AsteroidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0878077F191ED04300A355A7 /* AsteroidTests.m */; };
+		0878078A191ED1B500A355A7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08780789191ED1B500A355A7 /* libOCMock.a */; };
+		0878078C191ED34900A355A7 /* FKAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0878078B191ED34900A355A7 /* FKAppDelegateTests.m */; };
+		08780791191FA7B000A355A7 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780790191FA7B000A355A7 /* ship.png */; };
+		087807941920119400A355A7 /* FKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 087807931920119400A355A7 /* FKEntity.m */; };
+		08780796192144AD00A355A7 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780795192144AD00A355A7 /* bullet.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +58,17 @@
 		08780765191ED04300A355A7 /* FKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FKViewController.m; sourceTree = "<group>"; };
 		08780767191ED04300A355A7 /* FKMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKMyScene.h; sourceTree = "<group>"; };
 		08780768191ED04300A355A7 /* FKMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FKMyScene.m; sourceTree = "<group>"; };
-		0878076A191ED04300A355A7 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		0878076C191ED04300A355A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		08780772191ED04300A355A7 /* AsteroidTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsteroidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08780773191ED04300A355A7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0878077B191ED04300A355A7 /* AsteroidTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsteroidTests-Info.plist"; sourceTree = "<group>"; };
 		0878077D191ED04300A355A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0878077F191ED04300A355A7 /* AsteroidTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsteroidTests.m; sourceTree = "<group>"; };
+		08780789191ED1B500A355A7 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
+		0878078B191ED34900A355A7 /* FKAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKAppDelegateTests.m; sourceTree = "<group>"; };
+		08780790191FA7B000A355A7 /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
+		087807921920119300A355A7 /* FKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKEntity.h; sourceTree = "<group>"; };
+		087807931920119400A355A7 /* FKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKEntity.m; sourceTree = "<group>"; };
+		08780795192144AD00A355A7 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0878078A191ED1B500A355A7 /* libOCMock.a in Frameworks */,
 				08780774191ED04300A355A7 /* XCTest.framework in Frameworks */,
 				08780776191ED04300A355A7 /* UIKit.framework in Frameworks */,
 				08780775191ED04300A355A7 /* Foundation.framework in Frameworks */,
@@ -111,6 +119,7 @@
 		08780749191ED04300A355A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08780789191ED1B500A355A7 /* libOCMock.a */,
 				0878074A191ED04300A355A7 /* Foundation.framework */,
 				0878074C191ED04300A355A7 /* CoreGraphics.framework */,
 				0878074E191ED04300A355A7 /* UIKit.framework */,
@@ -131,9 +140,12 @@
 				08780765191ED04300A355A7 /* FKViewController.m */,
 				08780767191ED04300A355A7 /* FKMyScene.h */,
 				08780768191ED04300A355A7 /* FKMyScene.m */,
-				0878076A191ED04300A355A7 /* Spaceship.png */,
+				08780795192144AD00A355A7 /* bullet.png */,
+				08780790191FA7B000A355A7 /* ship.png */,
 				0878076C191ED04300A355A7 /* Images.xcassets */,
 				08780753191ED04300A355A7 /* Supporting Files */,
+				087807921920119300A355A7 /* FKEntity.h */,
+				087807931920119400A355A7 /* FKEntity.m */,
 			);
 			path = Asteroid;
 			sourceTree = "<group>";
@@ -152,7 +164,7 @@
 		08780779191ED04300A355A7 /* AsteroidTests */ = {
 			isa = PBXGroup;
 			children = (
-				0878077F191ED04300A355A7 /* AsteroidTests.m */,
+				0878078B191ED34900A355A7 /* FKAppDelegateTests.m */,
 				0878077A191ED04300A355A7 /* Supporting Files */,
 			);
 			path = AsteroidTests;
@@ -177,6 +189,7 @@
 				08780743191ED04300A355A7 /* Sources */,
 				08780744191ED04300A355A7 /* Frameworks */,
 				08780745191ED04300A355A7 /* Resources */,
+				0878078D191ED6A400A355A7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -244,11 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0878076B191ED04300A355A7 /* Spaceship.png in Resources */,
 				0878076D191ED04300A355A7 /* Images.xcassets in Resources */,
+				08780796192144AD00A355A7 /* bullet.png in Resources */,
 				08780763191ED04300A355A7 /* Main_iPad.storyboard in Resources */,
 				08780760191ED04300A355A7 /* Main_iPhone.storyboard in Resources */,
 				08780757191ED04300A355A7 /* InfoPlist.strings in Resources */,
+				08780791191FA7B000A355A7 /* ship.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +276,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0878078D191ED6A400A355A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = XcodeCoverage/exportenv.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		08780743191ED04300A355A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -271,6 +301,7 @@
 				0878075D191ED04300A355A7 /* FKAppDelegate.m in Sources */,
 				08780766191ED04300A355A7 /* FKViewController.m in Sources */,
 				08780769191ED04300A355A7 /* FKMyScene.m in Sources */,
+				087807941920119400A355A7 /* FKEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08780780191ED04300A355A7 /* AsteroidTests.m in Sources */,
+				0878078C191ED34900A355A7 /* FKAppDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,13 +468,32 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/usr/include\"",
+				);
 				INFOPLIST_FILE = "AsteroidTests/AsteroidTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/lib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-force_load",
+					"$(SRCROOT)/usr/lib/libOCMock.a",
+					"-ObjC",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -461,7 +511,24 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/usr/include\"",
+				);
 				INFOPLIST_FILE = "AsteroidTests/AsteroidTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/lib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-force_load",
+					"$(SRCROOT)/usr/lib/libOCMock.a",
+					"-ObjC",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
