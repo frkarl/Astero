@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "FKShipNode.h"
+#import "FKAsteroidNode.h"
 
 @interface FKMyScene : SKScene <SKPhysicsContactDelegate>
 {
@@ -16,8 +17,7 @@
     CGFloat screenWidth;
 }
 
-@property (nonatomic) FKShipNode *player;
-
-- (SKNode*) addMissile;
+@property FKShipNode *player;
+@property SKNode *playObjects;
 
 @end

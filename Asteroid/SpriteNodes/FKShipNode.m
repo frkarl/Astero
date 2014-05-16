@@ -7,7 +7,6 @@
 //
 
 #import "FKShipNode.h"
-#import "FKMyScene.h"
 
 @implementation FKShipNode
 - (void)initPhysics {
@@ -30,9 +29,9 @@
     self.physicsBody.angularDamping = 1.0;
     
     //  Collsion mapping
-    //ship.physicsBody.categoryBitMask = RBCshipCategory;
-    //ship.physicsBody.collisionBitMask = 0;
-    //ship.physicsBody.contactTestBitMask = RBCasteroidCategory;
+    //self.physicsBody.categoryBitMask = RBCshipCategory;
+    self.physicsBody.collisionBitMask = 0;
+    //self.physicsBody.contactTestBitMask = RBCasteroidCategory;
     
     CGPathRelease(path);
 }
@@ -47,10 +46,7 @@
     
     CGFloat shipDirection = self.zRotation + M_PI_2;
     
-    //  Get our main scene
-    FKMyScene *scene = (FKMyScene *) self.scene;
-    
-    SKNode *missile = [scene addMissile];
+    SKNode *missile = [FKBulletNode newBulletNode];
     missile.position = CGPointMake(self.position.x + 30*cosf(shipDirection),
                                    self.position.y + 30*sinf(shipDirection));
     
@@ -59,21 +55,17 @@
     //  Point the missle the same direction as the ship
     missile.zRotation = self.zRotation;
     
-    [scene addChild:missile];
+    [self.scene addChild:missile];
     
     // Just using a constant speed on the missiles
     missile.physicsBody.velocity = CGVectorMake(200*cosf(shipDirection),
                                                 200*sinf(shipDirection));
-    
-    //[self runAction:self.missileSound];
-
 }
 
 + (instancetype)newShipNode {
     FKShipNode *ship = [FKShipNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"ship"]];
     
     [ship initPhysics];
-    
     
     ship.name = @"Ship";
     //ship.health = 1000;

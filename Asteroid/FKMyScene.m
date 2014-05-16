@@ -23,10 +23,11 @@ const float Margin = 20.0f;
         
         self.backgroundColor = [SKColor colorWithRed:0 green:0 blue:0 alpha:1.0];
         
-        //self.player = [SKSpriteNode spriteNodeWithImageNamed:@"ship"];
-        //self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        //[self addChild:self.player];
+        self.playObjects = [[SKNode alloc] init];
+        self.playObjects.name = @"playObjects";
+        [self addChild:self.playObjects];
         [self addShip];
+        [self addAstroids];
     }
     return self;
 }
@@ -84,8 +85,6 @@ const float Margin = 20.0f;
     }
 }
 
-
-
 - (void)addShip {
     if (self.player) {
         return;
@@ -96,7 +95,7 @@ const float Margin = 20.0f;
         
         //  With no transsition just add the ship
         //if (!useTransition) {
-            [self addChild:self.player];//.playObjects addChild:self.player];
+            [self.playObjects addChild:self.player];//.playObjects addChild:self.player];
         //} else {
             //  Transition to drop in a new ship
          //   [self.player setScale:3.0];
@@ -110,38 +109,26 @@ const float Margin = 20.0f;
     //}
 }
 
-- (SKNode*) addMissile {
-    //  Load the texture
-    SKSpriteNode *missile = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bullet"]];
+- (void)addAstroids {
     
-    //  Offset for rotation
-    CGFloat offsetX = missile.frame.size.width * missile.anchorPoint.x;
-    CGFloat offsetY = missile.frame.size.height * missile.anchorPoint.y;
+    //  How many rocks are there? Make that many asteroids
     
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    //  Make the path for the physicsbody to use
-    CGPathMoveToPoint(path, NULL, 3 - offsetX, 14 - offsetY);
-    CGPathAddLineToPoint(path, NULL, 1 - offsetX, 9 - offsetY);
-    CGPathAddLineToPoint(path, NULL, 1 - offsetX, 0 - offsetY);
-    CGPathAddLineToPoint(path, NULL, 4 - offsetX, 0 - offsetY);
-    CGPathAddLineToPoint(path, NULL, 4 - offsetX, 10 - offsetY);
-    
-    CGPathCloseSubpath(path);
-    
-    //  Add the physics body no linearDamping so they just go at the same speed
-    missile.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
-    missile.physicsBody.linearDamping = 0.0;
-    
-    //  Collision maps. There are a lot of missiles, so push the job of collision detection to
-    //  the objects that we want to hit.
-    //missile.physicsBody.categoryBitMask = RBCmissileCategory;
-    missile.physicsBody.collisionBitMask = 0;
-    missile.physicsBody.contactTestBitMask = 0;
-    
-    //  Release the path so we don't leak
-    CGPathRelease(path);
-    return missile;
+    //while ( self.rockCount < self.HUD.level * 2) {
+        
+        FKAsteroidNode *asteroid = [FKAsteroidNode newAsteroid];
+        
+        asteroid.position = CGPointMake(arc4random_uniform(self.size.width), arc4random_uniform(self.size.height));
+        
+//#if DEBUG
+ //       NSLog(@"Level is %ld with %ld rocks", self.HUD.level, (long)self.rockCount + 1);
+//#endif
+        
+        [self.playObjects addChild:asteroid];
+        
+        [asteroid startMove];
+        //self.rockCount++;
+        
+    //}
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -152,7 +139,45 @@ const float Margin = 20.0f;
     [self handleTouches:touches];}
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+    [self updateSpritePositions];
+}
+
+- (void)updateSpritePositions {
+    
+    [self enumerateChildNodesWithName:@"/playObjects/*" usingBlock:^(SKNode *node, BOOL *stop) {
+        
+        //  Get the current possition
+        CGPoint nodePosition = CGPointMake(node.position.x, node.position.y);
+        
+        
+        //  If we've gone beyond the edge warp to the other side.
+        if (nodePosition.x > (CGRectGetMaxX(self.frame) + 20)) {
+            node.position = CGPointMake((CGRectGetMinX(self.frame) - 10), nodePosition.y);
+        }
+        
+        if (nodePosition.x < (CGRectGetMinX(self.frame) - 20)) {
+            node.position = CGPointMake((CGRectGetMaxX(self.frame) + 10), nodePosition.y);
+        }
+        
+        if (nodePosition.y > (CGRectGetMaxY(self.frame) + 20)) {
+            node.position = CGPointMake(nodePosition.x, (CGRectGetMinY(self.frame) - 10));
+        }
+        
+        if (nodePosition.y < (CGRectGetMinY(self.frame) - 20)) {
+            node.position = CGPointMake(nodePosition.x, (CGRectGetMaxY(self.frame) + 10));
+        }
+        
+    }];
+    
+    //  Remove any missles that have gone off screen
+    [self enumerateChildNodesWithName:@"missile" usingBlock:^(SKNode *node, BOOL *stop) {
+        if (node.position.y > (CGRectGetMaxY(self.frame)) || node.position.y < (CGRectGetMinY(self.frame)) ||
+            node.position.x > (CGRectGetMaxX(self.frame)) || node.position.x < (CGRectGetMinX(self.frame))) {
+            node.physicsBody = nil;
+            [node removeFromParent];
+        }
+    }];
+    
 }
 
 @end

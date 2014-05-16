@@ -26,9 +26,11 @@
 		0878078A191ED1B500A355A7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08780789191ED1B500A355A7 /* libOCMock.a */; };
 		0878078C191ED34900A355A7 /* FKAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0878078B191ED34900A355A7 /* FKAppDelegateTests.m */; };
 		08780791191FA7B000A355A7 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780790191FA7B000A355A7 /* ship.png */; };
-		087807941920119400A355A7 /* FKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 087807931920119400A355A7 /* FKEntity.m */; };
 		08780796192144AD00A355A7 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 08780795192144AD00A355A7 /* bullet.png */; };
-		08F4307C192412DB00932E9F /* FKShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F4307B192412DB00932E9F /* FKShipNode.m */; };
+		08F4307F1925423700932E9F /* FKBulletNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F4307E1925423700932E9F /* FKBulletNode.m */; };
+		08F430821925427500932E9F /* FKShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430811925427500932E9F /* FKShipNode.m */; };
+		08F430841926A64F00932E9F /* asteroid5.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F430831926A64E00932E9F /* asteroid5.png */; };
+		08F430871926A92900932E9F /* FKAsteroidNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430861926A92900932E9F /* FKAsteroidNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +69,14 @@
 		08780789191ED1B500A355A7 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		0878078B191ED34900A355A7 /* FKAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKAppDelegateTests.m; sourceTree = "<group>"; };
 		08780790191FA7B000A355A7 /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
-		087807921920119300A355A7 /* FKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKEntity.h; sourceTree = "<group>"; };
-		087807931920119400A355A7 /* FKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKEntity.m; sourceTree = "<group>"; };
 		08780795192144AD00A355A7 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
-		08F4307A192412DB00932E9F /* FKShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKShipNode.h; sourceTree = "<group>"; };
-		08F4307B192412DB00932E9F /* FKShipNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKShipNode.m; sourceTree = "<group>"; };
+		08F4307D1925423700932E9F /* FKBulletNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKBulletNode.h; path = SpriteNodes/FKBulletNode.h; sourceTree = "<group>"; };
+		08F4307E1925423700932E9F /* FKBulletNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKBulletNode.m; path = SpriteNodes/FKBulletNode.m; sourceTree = "<group>"; };
+		08F430801925427500932E9F /* FKShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKShipNode.h; path = SpriteNodes/FKShipNode.h; sourceTree = "<group>"; };
+		08F430811925427500932E9F /* FKShipNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKShipNode.m; path = SpriteNodes/FKShipNode.m; sourceTree = "<group>"; };
+		08F430831926A64E00932E9F /* asteroid5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid5.png; sourceTree = "<group>"; };
+		08F430851926A92900932E9F /* FKAsteroidNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKAsteroidNode.h; path = SpriteNodes/FKAsteroidNode.h; sourceTree = "<group>"; };
+		08F430861926A92900932E9F /* FKAsteroidNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKAsteroidNode.m; path = SpriteNodes/FKAsteroidNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,10 +151,9 @@
 				08780768191ED04300A355A7 /* FKMyScene.m */,
 				08780795192144AD00A355A7 /* bullet.png */,
 				08780790191FA7B000A355A7 /* ship.png */,
+				08F430831926A64E00932E9F /* asteroid5.png */,
 				0878076C191ED04300A355A7 /* Images.xcassets */,
 				08780753191ED04300A355A7 /* Supporting Files */,
-				087807921920119300A355A7 /* FKEntity.h */,
-				087807931920119400A355A7 /* FKEntity.m */,
 			);
 			path = Asteroid;
 			sourceTree = "<group>";
@@ -186,8 +190,12 @@
 		08F430791924123500932E9F /* SpritesNodes */ = {
 			isa = PBXGroup;
 			children = (
-				08F4307A192412DB00932E9F /* FKShipNode.h */,
-				08F4307B192412DB00932E9F /* FKShipNode.m */,
+				08F430801925427500932E9F /* FKShipNode.h */,
+				08F430811925427500932E9F /* FKShipNode.m */,
+				08F4307D1925423700932E9F /* FKBulletNode.h */,
+				08F4307E1925423700932E9F /* FKBulletNode.m */,
+				08F430851926A92900932E9F /* FKAsteroidNode.h */,
+				08F430861926A92900932E9F /* FKAsteroidNode.m */,
 			);
 			name = SpritesNodes;
 			sourceTree = "<group>";
@@ -270,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08F430841926A64F00932E9F /* asteroid5.png in Resources */,
 				0878076D191ED04300A355A7 /* Images.xcassets in Resources */,
 				08780796192144AD00A355A7 /* bullet.png in Resources */,
 				08780763191ED04300A355A7 /* Main_iPad.storyboard in Resources */,
@@ -312,10 +321,11 @@
 			files = (
 				08780759191ED04300A355A7 /* main.m in Sources */,
 				0878075D191ED04300A355A7 /* FKAppDelegate.m in Sources */,
-				08F4307C192412DB00932E9F /* FKShipNode.m in Sources */,
+				08F430821925427500932E9F /* FKShipNode.m in Sources */,
+				08F430871926A92900932E9F /* FKAsteroidNode.m in Sources */,
+				08F4307F1925423700932E9F /* FKBulletNode.m in Sources */,
 				08780766191ED04300A355A7 /* FKViewController.m in Sources */,
 				08780769191ED04300A355A7 /* FKMyScene.m in Sources */,
-				087807941920119400A355A7 /* FKEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

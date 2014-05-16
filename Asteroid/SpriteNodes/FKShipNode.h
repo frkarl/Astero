@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "FKBulletNode.h"
 
 @interface FKShipNode : SKSpriteNode
 + (instancetype)newShipNode;
