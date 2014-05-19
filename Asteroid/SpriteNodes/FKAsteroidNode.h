@@ -8,8 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+typedef NS_ENUM(NSInteger, RockType) {
+    Big,
+    Large
+};
+
 @interface FKAsteroidNode : SKSpriteNode
-+ (instancetype)newAsteroid;
+
+@property BOOL gone;
+
++ newAsteroidWithMass:(CGFloat)mass;
 
 - (void)startMove;
+- (BOOL)isGone;
 @end

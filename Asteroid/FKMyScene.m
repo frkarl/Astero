@@ -16,6 +16,7 @@ const float Margin = 20.0f;
 {
     if (self = [super initWithSize:size])
     {
+        self.astroidsToAdd = [NSArray array];
         /* Setup your scene here */
         screenRect = [[UIScreen mainScreen] bounds];
         screenHeight = screenRect.size.height;
@@ -60,15 +61,32 @@ const float Margin = 20.0f;
     
     // Missiles only hit rocks
     
-    //if ((firstBody.categoryBitMask & RBCmissileCategory) != 0) {
-        //[self hitRock:secondBody.node withMissile:firstBody.node];
-    //}
+    if ((firstBody.categoryBitMask & RBCmissileCategory) != 0) {
+        if([secondBody.node isKindOfClass:[FKAsteroidNode class]])
+        {
+            [self hitAsteroid:(FKAsteroidNode *)secondBody.node withBullet:firstBody.node];
+        }
+        
+    }
     
     //  Hit the ship with a rock
     //if ((secondBody.categoryBitMask & RBCshipCategory) != 0) {
         //[self.ship applyDamage:contact.collisionImpulse / 2];
         //[self.HUD shrinkHealthBar:(CGFloat)self.ship.health / 10];
     //}
+}
+
+- (void)hitAsteroid:(FKAsteroidNode *)asteroid withBullet:(SKNode*)bullet {
+    bullet.physicsBody = nil;
+    //SKEmitterNode *explosion = [self newExplosionNode: 0.1];
+    //explosion.position = bullet.position;
+    //[self addChild:explosion];
+    [bullet removeFromParent];
+    
+    asteroid.gone = true;
+    
+    // Generic rock boom
+    //[self runAction:self.rockExplodeSound];
 }
 
 - (void)handleTouches:(NSSet *)touches
@@ -115,7 +133,7 @@ const float Margin = 20.0f;
     
     //while ( self.rockCount < self.HUD.level * 2) {
         
-        FKAsteroidNode *asteroid = [FKAsteroidNode newAsteroid];
+        FKAsteroidNode *asteroid = [FKAsteroidNode newAsteroidWithMass:5];
         
         asteroid.position = CGPointMake(arc4random_uniform(self.size.width), arc4random_uniform(self.size.height));
         
@@ -140,6 +158,39 @@ const float Margin = 20.0f;
 
 -(void)update:(CFTimeInterval)currentTime {
     [self updateSpritePositions];
+    //  Update the score label
+    //[(SKLabelNode *)[self childNodeWithName:@"HUD/score"] setText: [NSString stringWithFormat:@"Score: %ld", (long)self.HUD.score]];
+    
+    //  If we are out of rocks it's time for the next level.
+    //if (self.rockCount == 0) {
+    //    [self advanceLevel];
+    //};
+}
+
+-(void) splitAsteriod:(FKAsteroidNode *) asteroid {
+    if (!asteroid.gone) {
+        return;
+    }
+    
+    CGPoint position = asteroid.position;
+    CGVector linearVelocity = asteroid.physicsBody.velocity;
+    CGFloat angularVelocity = asteroid.physicsBody.angularVelocity;
+    CGFloat mass = asteroid.physicsBody.mass;
+        
+    //self.rockCount-- ;
+    [asteroid removeFromParent];
+    //self.HUD.score = self.HUD.score + 100;
+    if (mass > 1 && mass <= 5) {
+        for (NSInteger i = 0; i < 2; i++) {
+            FKAsteroidNode *newAsteroid = [FKAsteroidNode newAsteroidWithMass:mass-1];
+            //self.rockCount++;
+                
+            newAsteroid.position = position;
+            [self.playObjects addChild:newAsteroid];
+            newAsteroid.physicsBody.velocity =  CGVectorMake(linearVelocity.dx * 1.2, linearVelocity.dy * 1.2);
+            newAsteroid.physicsBody.angularVelocity = (angularVelocity + 3.0);
+        }
+    }
 }
 
 - (void)updateSpritePositions {
@@ -169,8 +220,14 @@ const float Margin = 20.0f;
         
     }];
     
-    //  Remove any missles that have gone off screen
-    [self enumerateChildNodesWithName:@"missile" usingBlock:^(SKNode *node, BOOL *stop) {
+    [self enumerateChildNodesWithName:@"/playObjects/asteroid" usingBlock:^(SKNode *node, BOOL *stop) {
+        if([node isKindOfClass:[FKAsteroidNode class]])
+        {
+            [self splitAsteriod:(FKAsteroidNode *)node];
+        }
+    }];
+    
+    [self enumerateChildNodesWithName:@"/playObjects/missile" usingBlock:^(SKNode *node, BOOL *stop) {
         if (node.position.y > (CGRectGetMaxY(self.frame)) || node.position.y < (CGRectGetMinY(self.frame)) ||
             node.position.x > (CGRectGetMaxX(self.frame)) || node.position.x < (CGRectGetMinX(self.frame))) {
             node.physicsBody = nil;

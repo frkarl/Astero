@@ -10,6 +10,12 @@
 #import "FKShipNode.h"
 #import "FKAsteroidNode.h"
 
+typedef NS_OPTIONS(NSUInteger, RockBusterCollionsMask) {
+    RBCmissileCategory =  1 << 0,
+    RBCasteroidCategory =  1 << 1,
+    RBCshipCategory =  1 << 2
+};
+
 @interface FKMyScene : SKScene <SKPhysicsContactDelegate>
 {
     CGRect screenRect;
@@ -19,5 +25,6 @@
 
 @property FKShipNode *player;
 @property SKNode *playObjects;
+@property NSArray *astroidsToAdd;
 
 @end

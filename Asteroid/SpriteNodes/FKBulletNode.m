@@ -7,6 +7,7 @@
 //
 
 #import "FKBulletNode.h"
+#import "FKMyScene.h"
 
 @implementation FKBulletNode
 
@@ -25,7 +26,7 @@
     
     self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
     self.physicsBody.linearDamping = 0.0;
-    //self.physicsBody.categoryBitMask = RBCmissileCategory;
+    self.physicsBody.categoryBitMask = RBCmissileCategory;
     self.physicsBody.collisionBitMask = 0;
     self.physicsBody.contactTestBitMask = 0;
     

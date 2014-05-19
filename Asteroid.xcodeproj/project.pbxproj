@@ -31,6 +31,10 @@
 		08F430821925427500932E9F /* FKShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430811925427500932E9F /* FKShipNode.m */; };
 		08F430841926A64F00932E9F /* asteroid5.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F430831926A64E00932E9F /* asteroid5.png */; };
 		08F430871926A92900932E9F /* FKAsteroidNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430861926A92900932E9F /* FKAsteroidNode.m */; };
+		08F43089192804AC00932E9F /* asteroid4.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F43088192804AC00932E9F /* asteroid4.png */; };
+		08F4308B192A9BBD00932E9F /* asteroid3.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308A192A9BBD00932E9F /* asteroid3.png */; };
+		08F4308D192A9D6F00932E9F /* asteroid2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308C192A9D6F00932E9F /* asteroid2.png */; };
+		08F4308F192A9D7900932E9F /* asteroid1.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308E192A9D7900932E9F /* asteroid1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,10 @@
 		08F430831926A64E00932E9F /* asteroid5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid5.png; sourceTree = "<group>"; };
 		08F430851926A92900932E9F /* FKAsteroidNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKAsteroidNode.h; path = SpriteNodes/FKAsteroidNode.h; sourceTree = "<group>"; };
 		08F430861926A92900932E9F /* FKAsteroidNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKAsteroidNode.m; path = SpriteNodes/FKAsteroidNode.m; sourceTree = "<group>"; };
+		08F43088192804AC00932E9F /* asteroid4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid4.png; sourceTree = "<group>"; };
+		08F4308A192A9BBD00932E9F /* asteroid3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid3.png; sourceTree = "<group>"; };
+		08F4308C192A9D6F00932E9F /* asteroid2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid2.png; sourceTree = "<group>"; };
+		08F4308E192A9D7900932E9F /* asteroid1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,10 @@
 				08780768191ED04300A355A7 /* FKMyScene.m */,
 				08780795192144AD00A355A7 /* bullet.png */,
 				08780790191FA7B000A355A7 /* ship.png */,
+				08F4308E192A9D7900932E9F /* asteroid1.png */,
+				08F4308C192A9D6F00932E9F /* asteroid2.png */,
+				08F4308A192A9BBD00932E9F /* asteroid3.png */,
+				08F43088192804AC00932E9F /* asteroid4.png */,
 				08F430831926A64E00932E9F /* asteroid5.png */,
 				0878076C191ED04300A355A7 /* Images.xcassets */,
 				08780753191ED04300A355A7 /* Supporting Files */,
@@ -281,10 +293,14 @@
 				08F430841926A64F00932E9F /* asteroid5.png in Resources */,
 				0878076D191ED04300A355A7 /* Images.xcassets in Resources */,
 				08780796192144AD00A355A7 /* bullet.png in Resources */,
+				08F4308B192A9BBD00932E9F /* asteroid3.png in Resources */,
 				08780763191ED04300A355A7 /* Main_iPad.storyboard in Resources */,
 				08780760191ED04300A355A7 /* Main_iPhone.storyboard in Resources */,
 				08780757191ED04300A355A7 /* InfoPlist.strings in Resources */,
 				08780791191FA7B000A355A7 /* ship.png in Resources */,
+				08F43089192804AC00932E9F /* asteroid4.png in Resources */,
+				08F4308F192A9D7900932E9F /* asteroid1.png in Resources */,
+				08F4308D192A9D6F00932E9F /* asteroid2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
