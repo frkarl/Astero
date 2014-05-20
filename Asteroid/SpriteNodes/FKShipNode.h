@@ -10,8 +10,11 @@
 #import "FKBulletNode.h"
 
 @interface FKShipNode : SKSpriteNode
+@property NSInteger health;
+
 + (instancetype)newShipNode;
 
+- (void)applyDamage:(NSInteger)ammount;
 - (void)fireShot;
 @end
 

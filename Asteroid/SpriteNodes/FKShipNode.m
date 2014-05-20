@@ -7,6 +7,7 @@
 //
 
 #import "FKShipNode.h"
+#import "FKMyScene.h"
 
 @implementation FKShipNode
 - (void)initPhysics {
@@ -29,9 +30,9 @@
     self.physicsBody.angularDamping = 1.0;
     
     //  Collsion mapping
-    //self.physicsBody.categoryBitMask = RBCshipCategory;
+    self.physicsBody.categoryBitMask = RBCshipCategory;
     self.physicsBody.collisionBitMask = 0;
-    //self.physicsBody.contactTestBitMask = RBCasteroidCategory;
+    self.physicsBody.contactTestBitMask = RBCasteroidCategory;
     
     CGPathRelease(path);
 }
@@ -62,13 +63,32 @@
                                                 200*sinf(shipDirection));
 }
 
+- (void)applyDamage:(NSInteger)ammount {
+    if (ammount >= self.health) {
+        self.health = 0;
+        [self explode];
+        return;
+    }
+    
+    self.health -= ammount;
+    
+    //if (self.health <=250) {
+    //    [self runAction:self.warningSound];
+    //}
+}
+
+- (void)explode {
+    [self runAction:[SKAction removeFromParent]];
+    [self removeAllActions];
+}
+
 + (instancetype)newShipNode {
     FKShipNode *ship = [FKShipNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"ship"]];
     
     [ship initPhysics];
     
     ship.name = @"Ship";
-    //ship.health = 1000;
+    ship.health = 1000;
     
     //    ship.playingSound = NO;
     //    ship.engineNoise = [SKAction playSoundFileNamed:@"RocketThrusters.caf" waitForCompletion:YES];

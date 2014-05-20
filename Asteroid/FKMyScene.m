@@ -16,7 +16,7 @@ const float Margin = 20.0f;
 {
     if (self = [super initWithSize:size])
     {
-        self.astroidsToAdd = [NSArray array];
+        self.astroidCount = 0;
         /* Setup your scene here */
         screenRect = [[UIScreen mainScreen] bounds];
         screenHeight = screenRect.size.height;
@@ -59,8 +59,6 @@ const float Margin = 20.0f;
         secondBody = contact.bodyA;
     }
     
-    // Missiles only hit rocks
-    
     if ((firstBody.categoryBitMask & RBCmissileCategory) != 0) {
         if([secondBody.node isKindOfClass:[FKAsteroidNode class]])
         {
@@ -69,11 +67,10 @@ const float Margin = 20.0f;
         
     }
     
-    //  Hit the ship with a rock
-    //if ((secondBody.categoryBitMask & RBCshipCategory) != 0) {
-        //[self.ship applyDamage:contact.collisionImpulse / 2];
+    if ((secondBody.categoryBitMask & RBCshipCategory) != 0) {
+        [self.player applyDamage:contact.collisionImpulse / 2];
         //[self.HUD shrinkHealthBar:(CGFloat)self.ship.health / 10];
-    //}
+    }
 }
 
 - (void)hitAsteroid:(FKAsteroidNode *)asteroid withBullet:(SKNode*)bullet {
@@ -128,25 +125,14 @@ const float Margin = 20.0f;
 }
 
 - (void)addAstroids {
-    
-    //  How many rocks are there? Make that many asteroids
-    
-    //while ( self.rockCount < self.HUD.level * 2) {
-        
+    while (self.astroidCount < 5) { //self.HUD.level * 2) {
         FKAsteroidNode *asteroid = [FKAsteroidNode newAsteroidWithMass:5];
-        
         asteroid.position = CGPointMake(arc4random_uniform(self.size.width), arc4random_uniform(self.size.height));
         
-//#if DEBUG
- //       NSLog(@"Level is %ld with %ld rocks", self.HUD.level, (long)self.rockCount + 1);
-//#endif
-        
         [self.playObjects addChild:asteroid];
-        
         [asteroid startMove];
-        //self.rockCount++;
-        
-    //}
+        self.astroidCount++;
+    }
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {

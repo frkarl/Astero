@@ -25,6 +25,6 @@ typedef NS_OPTIONS(NSUInteger, RockBusterCollionsMask) {
 
 @property FKShipNode *player;
 @property SKNode *playObjects;
-@property NSArray *astroidsToAdd;
+@property NSInteger astroidCount;
 
 @end
