@@ -24,12 +24,10 @@
     
     self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
     
-    //  Give the ship a mass of 2 and some linearDamping that makes us slow down after letting off the gas.
     self.physicsBody.mass = 2;
     self.physicsBody.linearDamping = .7;
     self.physicsBody.angularDamping = 1.0;
     
-    //  Collsion mapping
     self.physicsBody.categoryBitMask = RBCshipCategory;
     self.physicsBody.collisionBitMask = 0;
     self.physicsBody.contactTestBitMask = RBCasteroidCategory;
@@ -38,27 +36,16 @@
 }
 
 - (void)fireShot {
-    /* Fire a missile if there's one ready */
-    
-    //CFTimeInterval timeSinceLastFired = currentTime - self.timeLastFiredMissile;
-    //if (timeSinceLastFired > firingInterval)
-    //{
-    //self.timeLastFiredMissile = currentTime;
-    
     CGFloat shipDirection = self.zRotation + M_PI_2;
     
     SKNode *missile = [FKBulletNode newBulletNode];
     missile.position = CGPointMake(self.position.x + 30*cosf(shipDirection),
                                    self.position.y + 30*sinf(shipDirection));
-    
     missile.name = @"missile";
-    
-    //  Point the missle the same direction as the ship
     missile.zRotation = self.zRotation;
     
     [self.scene addChild:missile];
     
-    // Just using a constant speed on the missiles
     missile.physicsBody.velocity = CGVectorMake(200*cosf(shipDirection),
                                                 200*sinf(shipDirection));
 }

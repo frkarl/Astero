@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "FKShipNode.h"
 #import "FKAsteroidNode.h"
+#import "FKGrid.h"
 
 typedef NS_OPTIONS(NSUInteger, RockBusterCollionsMask) {
     RBCmissileCategory =  1 << 0,
@@ -23,6 +24,7 @@ typedef NS_OPTIONS(NSUInteger, RockBusterCollionsMask) {
     CGFloat screenWidth;
 }
 
+@property FKGrid *grid;
 @property FKShipNode *player;
 @property SKNode *playObjects;
 @property NSInteger astroidCount;

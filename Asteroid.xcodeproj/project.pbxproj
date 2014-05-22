@@ -35,6 +35,9 @@
 		08F4308B192A9BBD00932E9F /* asteroid3.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308A192A9BBD00932E9F /* asteroid3.png */; };
 		08F4308D192A9D6F00932E9F /* asteroid2.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308C192A9D6F00932E9F /* asteroid2.png */; };
 		08F4308F192A9D7900932E9F /* asteroid1.png in Resources */ = {isa = PBXBuildFile; fileRef = 08F4308E192A9D7900932E9F /* asteroid1.png */; };
+		08F43094192D3DE000932E9F /* FKGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F43093192D3DE000932E9F /* FKGrid.m */; };
+		08F43097192D40C700932E9F /* FKPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F43096192D40C700932E9F /* FKPoint.m */; };
+		08F4309A192D488800932E9F /* FKSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F43099192D488800932E9F /* FKSpring.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,12 @@
 		08F4308A192A9BBD00932E9F /* asteroid3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid3.png; sourceTree = "<group>"; };
 		08F4308C192A9D6F00932E9F /* asteroid2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid2.png; sourceTree = "<group>"; };
 		08F4308E192A9D7900932E9F /* asteroid1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid1.png; sourceTree = "<group>"; };
+		08F43092192D3DE000932E9F /* FKGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKGrid.h; path = ForceGrid/FKGrid.h; sourceTree = "<group>"; };
+		08F43093192D3DE000932E9F /* FKGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKGrid.m; path = ForceGrid/FKGrid.m; sourceTree = "<group>"; };
+		08F43095192D40C700932E9F /* FKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKPoint.h; sourceTree = "<group>"; };
+		08F43096192D40C700932E9F /* FKPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKPoint.m; sourceTree = "<group>"; };
+		08F43098192D488800932E9F /* FKSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKSpring.h; path = ForceGrid/FKSpring.h; sourceTree = "<group>"; };
+		08F43099192D488800932E9F /* FKSpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKSpring.m; path = ForceGrid/FKSpring.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +219,12 @@
 		08F43090192C04C600932E9F /* ForceGrid */ = {
 			isa = PBXGroup;
 			children = (
+				08F43092192D3DE000932E9F /* FKGrid.h */,
+				08F43093192D3DE000932E9F /* FKGrid.m */,
+				08F43095192D40C700932E9F /* FKPoint.h */,
+				08F43096192D40C700932E9F /* FKPoint.m */,
+				08F43098192D488800932E9F /* FKSpring.h */,
+				08F43099192D488800932E9F /* FKSpring.m */,
 			);
 			name = ForceGrid;
 			sourceTree = "<group>";
@@ -353,11 +368,14 @@
 			files = (
 				08780759191ED04300A355A7 /* main.m in Sources */,
 				0878075D191ED04300A355A7 /* FKAppDelegate.m in Sources */,
+				08F43094192D3DE000932E9F /* FKGrid.m in Sources */,
+				08F4309A192D488800932E9F /* FKSpring.m in Sources */,
 				08F430821925427500932E9F /* FKShipNode.m in Sources */,
 				08F430871926A92900932E9F /* FKAsteroidNode.m in Sources */,
 				08F4307F1925423700932E9F /* FKBulletNode.m in Sources */,
 				08780766191ED04300A355A7 /* FKViewController.m in Sources */,
 				08780769191ED04300A355A7 /* FKMyScene.m in Sources */,
+				08F43097192D40C700932E9F /* FKPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

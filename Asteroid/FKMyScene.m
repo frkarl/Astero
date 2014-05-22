@@ -29,6 +29,7 @@ const float Margin = 20.0f;
         [self addChild:self.playObjects];
         [self addShip];
         [self addAstroids];
+        self.grid = [[FKGrid alloc] initWithSize:screenRect.size andSpacing:CGPointMake(20, 20) andScene:self];
     }
     return self;
 }
@@ -213,11 +214,13 @@ const float Margin = 20.0f;
         }
     }];
     
-    [self enumerateChildNodesWithName:@"/playObjects/missile" usingBlock:^(SKNode *node, BOOL *stop) {
+    [self enumerateChildNodesWithName:@"/missile" usingBlock:^(SKNode *node, BOOL *stop) {
         if (node.position.y > (CGRectGetMaxY(self.frame)) || node.position.y < (CGRectGetMinY(self.frame)) ||
             node.position.x > (CGRectGetMaxX(self.frame)) || node.position.x < (CGRectGetMinX(self.frame))) {
             node.physicsBody = nil;
             [node removeFromParent];
+        } else {
+            [self.grid applyExplosiveAtPosition:node.position andRadius:100];
         }
     }];
     

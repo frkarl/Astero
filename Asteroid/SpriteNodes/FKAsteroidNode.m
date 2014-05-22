@@ -26,13 +26,14 @@
     self.physicsBody.contactTestBitMask = (RBCasteroidCategory | RBCmissileCategory | RBCshipCategory);
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.mass = mass;
+    self.physicsBody.linearDamping = 0.0;
     self.physicsBody.angularDamping = 0.0;
 }
 
 + (instancetype)newAsteroidWithMass:(CGFloat)mass {
     FKAsteroidNode *asteroid = [FKAsteroidNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:[NSString stringWithFormat:@"asteroid%ld", (long)mass]]];
     [asteroid initPhysicsWithMass:mass];
-    asteroid.name = @"asteroid";//[@(rockType) stringValue];
+    asteroid.name = @"asteroid";
     SKAction *action = [SKAction rotateByAngle:M_PI duration:3];
     
     [asteroid runAction:[SKAction repeatActionForever:action]];

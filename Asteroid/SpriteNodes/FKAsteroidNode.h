@@ -8,11 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-typedef NS_ENUM(NSInteger, RockType) {
-    Big,
-    Large
-};
-
 @interface FKAsteroidNode : SKSpriteNode
 
 @property BOOL gone;
