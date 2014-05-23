@@ -12,9 +12,6 @@
 
 @property CGFloat mass;
 
-- (id)initWithPosition:(CGPoint) position andMass:(CGFloat) mass;
-- (void)applyForce:(CGVector) force;
-- (void)increaseDampingByFactor:(CGFloat) factor;
-- (void)update;
+- (id)initWithPosition:(CGPoint) position mass:(CGFloat) mass isStatic:(BOOL) isStatic;
 
 @end

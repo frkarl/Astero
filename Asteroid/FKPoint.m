@@ -10,7 +10,7 @@
 
 @implementation FKPoint
 
-- (id)initWithPosition:(CGPoint) position andMass:(CGFloat) mass {
+- (id)initWithPosition:(CGPoint) position mass:(CGFloat) mass isStatic:(BOOL) isStatic {
     self = [super init];
     if (self) {
         self.mass = mass;
@@ -22,7 +22,12 @@
         //self.strokeColor = [UIColor blueColor];
         self.zPosition = -1;
         
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        if (isStatic) {
+            self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        } else {
+            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        }
+        
         self.physicsBody.categoryBitMask = 0;
         self.physicsBody.collisionBitMask = 0;
         self.physicsBody.contactTestBitMask = 0;
@@ -33,18 +38,6 @@
         //circle.glowWidth = 5;
     }
     return self;
-}
-
-- (void)applyForce:(CGVector) force {
-    
-}
-
-- (void)increaseDampingByFactor:(CGFloat) factor {
-    
-}
-
-- (void)update {
-    
 }
 
 @end

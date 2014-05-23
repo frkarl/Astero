@@ -10,7 +10,9 @@
 
 @implementation FKGrid
 
-- (void)createPoints:(NSMutableArray *)fixedPoints spacing:(CGPoint)spacing size:(CGSize)size numColumns:(int)numColumns {
+- (void)createPoints:(NSMutableArray *)fixedPoints spacing:(CGPoint)spacing size:(CGSize)size {
+    int numColumns = (int)(size.width / spacing.x) + 1;
+    int numRows = (int)(size.height / spacing.y) + 1;
     int column = 0, row = 0;
     for (float y = 0; y <= size.height; y += spacing.y)
     {
@@ -19,10 +21,15 @@
         
         for (float x = 0; x <= size.width; x += spacing.x)
         {
-            FKPoint *point = [[FKPoint alloc] initWithPosition:CGPointMake(y, x) andMass:1];
+            FKPoint *point;
+            if (column == 0 || row == 0|| column == numColumns - 1 || row == numRows - 1) {
+                point = [[FKPoint alloc] initWithPosition:CGPointMake(y, x) mass:1 isStatic:YES];
+            } else {
+                point = [[FKPoint alloc] initWithPosition:CGPointMake(y, x) mass:1 isStatic:NO];
+            }
             [self.scene addChild:point];
             [rowArray insertObject:point atIndex:column];
-            [fixedRow insertObject:[[FKPoint alloc] initWithPosition:CGPointMake(y, x) andMass:0] atIndex:column];
+            [fixedRow insertObject:[[FKPoint alloc] initWithPosition:CGPointMake(y, x) mass:0 isStatic:YES] atIndex:column];
             //fixedPoints[column][row] = [[FKPoint alloc] initWithPosition:CGVectorMake(x, y) andMass:0];
             column++;
         }
@@ -45,14 +52,41 @@
         // these fixed points will be used to anchor the grid to fixed positions on the screen
         NSMutableArray *fixedPoints = [[NSMutableArray alloc] initWithCapacity:numRows];
         
-        [self createPoints:fixedPoints spacing:spacing size:size numColumns:numColumns];
-        /*
+        [self createPoints:fixedPoints spacing:spacing size:size];
+        
         // link the point masses with springs
-        for (int y = 0; y < numRows; y++)
-            for (int x = 0; x < numColumns; x++)
+        for (int y = 0; y < numRows-1; y++)
+            for (int x = 0; x < numColumns-1; x++)
             {
-                if (x == 0 || y == 0 || x == numColumns - 1 || y == numRows - 1)    // anchor the border of the grid
+                NSMutableArray *rowArray = [self.points objectAtIndex:y];
+                NSMutableArray *nextRowArray = [self.points objectAtIndex:y+1];
+                FKPoint *point = [rowArray objectAtIndex:x];
+                FKPoint *leftPoint = [rowArray objectAtIndex:x+1];
+                FKPoint *topPoint = [nextRowArray objectAtIndex:x];
+                
+                SKPhysicsJointSpring *springA = [SKPhysicsJointSpring jointWithBodyA:point.physicsBody bodyB:leftPoint.physicsBody
+                                                                            anchorA:point.position anchorB:leftPoint.position];
+                SKPhysicsJointSpring *springB = [SKPhysicsJointSpring jointWithBodyA:point.physicsBody bodyB:topPoint.physicsBody
+                                                                            anchorA:point.position anchorB:topPoint.position];
+                springA.frequency = 1.0; //gives the spring some elasticity.
+                springA.damping = 0.0;
+                springB.frequency = 1.0; //gives the spring some elasticity.
+                springB.damping = 0.0;
+                [self.scene.physicsWorld addJoint:springA];
+                [self.scene.physicsWorld addJoint:springB];
+                
+                /*
+                if (x == 0 || y == 0 || x == numColumns - 1 || y == numRows - 1) {    // anchor the border of the grid
+                    NSMutableArray *rowArray = [[NSMutableArray alloc] initWithCapacity:numColumns];
+                    NSMutableArray *fixedRow = [[NSMutableArray alloc] initWithCapacity:numColumns];
+                    
+                    SKPhysicsJointSpring *spring = [SKPhysicsJointSpring jointWithBodyA:ceiling.physicsBody
+                                                                                  bodyB:block.physicsBody
+                                                                                anchorA:ceiling.position
+                                                                                anchorB:block.position];
+                    [self.scene.physicsWorld addJoint:spring];
                     [self.springList addObject:[SKPhysicsJointSpring init]];
+                }
                     //springList.Add(new Spring(fixedPoints[x, y], points[x, y], 0.1f, 0.1f));
                 else if (x % 3 == 0 && y % 3 == 0)                                  // loosely anchor 1/9th of the point masses
                     [self.springList addObject:[SKPhysicsJointSpring init]];
@@ -66,8 +100,9 @@
                 if (y > 0)
                     [self.springList addObject:[SKPhysicsJointSpring init]];
                     //springList.Add(new Spring(points[x, y - 1], points[x, y], stiffness, damping));
+                 */
             }
-         */
+        
     }
     return self;
 }

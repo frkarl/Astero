@@ -29,7 +29,7 @@ const float Margin = 20.0f;
         [self addChild:self.playObjects];
         [self addShip];
         [self addAstroids];
-        self.grid = [[FKGrid alloc] initWithSize:screenRect.size andSpacing:CGPointMake(20, 20) andScene:self];
+        self.grid = [[FKGrid alloc] initWithSize:screenRect.size andSpacing:CGPointMake(40, 40) andScene:self];
     }
     return self;
 }
