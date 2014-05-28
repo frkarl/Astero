@@ -30,7 +30,6 @@
             [self.scene addChild:point];
             [rowArray insertObject:point atIndex:column];
             [fixedRow insertObject:[[FKPoint alloc] initWithPosition:CGPointMake(y, x) mass:0 isStatic:YES] atIndex:column];
-            //fixedPoints[column][row] = [[FKPoint alloc] initWithPosition:CGVectorMake(x, y) andMass:0];
             column++;
         }
         [self.points insertObject:rowArray atIndex:row];
@@ -55,7 +54,7 @@
         [self createPoints:fixedPoints spacing:spacing size:size];
         
         // link the point masses with springs
-        for (int y = 0; y < numRows-1; y++)
+        for (int y = 0; y < numRows-1; y++) {
             for (int x = 0; x < numColumns-1; x++)
             {
                 NSMutableArray *rowArray = [self.points objectAtIndex:y];
@@ -74,34 +73,8 @@
                 springB.damping = 0.0;
                 [self.scene.physicsWorld addJoint:springA];
                 [self.scene.physicsWorld addJoint:springB];
-                
-                /*
-                if (x == 0 || y == 0 || x == numColumns - 1 || y == numRows - 1) {    // anchor the border of the grid
-                    NSMutableArray *rowArray = [[NSMutableArray alloc] initWithCapacity:numColumns];
-                    NSMutableArray *fixedRow = [[NSMutableArray alloc] initWithCapacity:numColumns];
-                    
-                    SKPhysicsJointSpring *spring = [SKPhysicsJointSpring jointWithBodyA:ceiling.physicsBody
-                                                                                  bodyB:block.physicsBody
-                                                                                anchorA:ceiling.position
-                                                                                anchorB:block.position];
-                    [self.scene.physicsWorld addJoint:spring];
-                    [self.springList addObject:[SKPhysicsJointSpring init]];
-                }
-                    //springList.Add(new Spring(fixedPoints[x, y], points[x, y], 0.1f, 0.1f));
-                else if (x % 3 == 0 && y % 3 == 0)                                  // loosely anchor 1/9th of the point masses
-                    [self.springList addObject:[SKPhysicsJointSpring init]];
-                    //springList.Add(new Spring(fixedPoints[x, y], points[x, y], 0.002f, 0.02f));
-                
-                const float stiffness = 0.28f;
-                const float damping = 0.06f;
-                if (x > 0)
-                    [self.springList addObject:[SKPhysicsJointSpring init]];
-                    //springList.Add(new Spring(points[x - 1, y], points[x, y], stiffness, damping));
-                if (y > 0)
-                    [self.springList addObject:[SKPhysicsJointSpring init]];
-                    //springList.Add(new Spring(points[x, y - 1], points[x, y], stiffness, damping));
-                 */
             }
+        }
         
     }
     return self;
