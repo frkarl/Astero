@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface FKPoint : SKSpriteNode
+@interface FKPoint : SKNode
 
 @property CGFloat mass;
 

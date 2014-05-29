@@ -145,6 +145,7 @@ const float Margin = 20.0f;
 
 -(void)update:(CFTimeInterval)currentTime {
     [self updateSpritePositions];
+    [self.grid updateRays];
     //  Update the score label
     //[(SKLabelNode *)[self childNodeWithName:@"HUD/score"] setText: [NSString stringWithFormat:@"Score: %ld", (long)self.HUD.score]];
     

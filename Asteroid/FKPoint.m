@@ -14,9 +14,9 @@
     self = [super init];
     if (self) {
         self.mass = mass;
-        self.color = [UIColor blueColor];
+        //self.color = [UIColor blueColor];
         self.position = position;
-        self.size=CGSizeMake(4, 4);
+        //self.size=CGSizeMake(4, 4);
         //self.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 4, 4)].CGPath;
         //self.fillColor = [UIColor blueColor];
         //self.strokeColor = [UIColor blueColor];
@@ -25,7 +25,7 @@
         if (isStatic) {
             self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         } else {
-            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(4, 4)];
         }
         
         self.physicsBody.categoryBitMask = 0;
