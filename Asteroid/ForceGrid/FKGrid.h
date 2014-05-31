@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FKPoint.h"
-#import "FKSpring.h"
 
 @interface FKGrid : NSObject
 

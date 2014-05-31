@@ -51,12 +51,10 @@
         int numRows = (int)(size.height / spacing.y) + 1;
         self.points = [[NSMutableArray alloc] initWithCapacity:numRows];
         
-        // these fixed points will be used to anchor the grid to fixed positions on the screen
         NSMutableArray *fixedPoints = [[NSMutableArray alloc] initWithCapacity:numRows];
         
         [self createPoints:fixedPoints spacing:spacing size:size];
         
-        // link the point masses with springs
         for (int y = 0; y < numRows-1; y++) {
             for (int x = 0; x < numColumns-1; x++)
             {
@@ -70,9 +68,9 @@
                                                                             anchorA:point.position anchorB:leftPoint.position];
                 SKPhysicsJointSpring *springB = [SKPhysicsJointSpring jointWithBodyA:point.physicsBody bodyB:topPoint.physicsBody
                                                                             anchorA:point.position anchorB:topPoint.position];
-                springA.frequency = 1.0; //gives the spring some elasticity.
+                springA.frequency = 1.0;
                 springA.damping = 1.0;
-                springB.frequency = 1.0; //gives the spring some elasticity.
+                springB.frequency = 1.0;
                 springB.damping = 1.0;
                 [self.springList addObject:springA];
                 [self.springList addObject:springB];
@@ -93,9 +91,7 @@
             if (distance < radius * radius) {
                 [point.physicsBody applyForce:vector];
             }
-            
         }
-
     }
 }
 
@@ -118,13 +114,11 @@
         CGMutablePathRef pathToDraw = CGPathCreateMutable();
         CGPoint posA = spring.bodyA.node.position;
         CGPathMoveToPoint(pathToDraw, NULL, posA.x, posA.y);
-        //ray.path = pathToDraw;
         CGPoint posB = spring.bodyB.node.position;
         CGPathAddLineToPoint(pathToDraw, NULL, posB.x, posB.y);
         ray.path = pathToDraw;
         [self.rays addObject:ray];
     }
-    
 }
 
 @end
