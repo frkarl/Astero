@@ -25,6 +25,7 @@
 		0878077E191ED04300A355A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0878077C191ED04300A355A7 /* InfoPlist.strings */; };
 		0878078A191ED1B500A355A7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08780789191ED1B500A355A7 /* libOCMock.a */; };
 		0878078C191ED34900A355A7 /* FKAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0878078B191ED34900A355A7 /* FKAppDelegateTests.m */; };
+		08C7B86B193A7D88009C5DBF /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08C7B869193A7D88009C5DBF /* Explosion.sks */; };
 		08F4307F1925423700932E9F /* FKBulletNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F4307E1925423700932E9F /* FKBulletNode.m */; };
 		08F430821925427500932E9F /* FKShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430811925427500932E9F /* FKShipNode.m */; };
 		08F430871926A92900932E9F /* FKAsteroidNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F430861926A92900932E9F /* FKAsteroidNode.m */; };
@@ -67,6 +68,7 @@
 		0878077D191ED04300A355A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08780789191ED1B500A355A7 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		0878078B191ED34900A355A7 /* FKAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKAppDelegateTests.m; sourceTree = "<group>"; };
+		08C7B869193A7D88009C5DBF /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		08F4307D1925423700932E9F /* FKBulletNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKBulletNode.h; path = SpriteNodes/FKBulletNode.h; sourceTree = "<group>"; };
 		08F4307E1925423700932E9F /* FKBulletNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKBulletNode.m; path = SpriteNodes/FKBulletNode.m; sourceTree = "<group>"; };
 		08F430801925427500932E9F /* FKShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKShipNode.h; path = SpriteNodes/FKShipNode.h; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				08780765191ED04300A355A7 /* FKViewController.m */,
 				08780767191ED04300A355A7 /* FKMyScene.h */,
 				08780768191ED04300A355A7 /* FKMyScene.m */,
+				08C7B869193A7D88009C5DBF /* Explosion.sks */,
 				0878076C191ED04300A355A7 /* Images.xcassets */,
 				08780753191ED04300A355A7 /* Supporting Files */,
 			);
@@ -289,6 +292,7 @@
 			files = (
 				0878076D191ED04300A355A7 /* Images.xcassets in Resources */,
 				08780763191ED04300A355A7 /* Main_iPad.storyboard in Resources */,
+				08C7B86B193A7D88009C5DBF /* Explosion.sks in Resources */,
 				08780760191ED04300A355A7 /* Main_iPhone.storyboard in Resources */,
 				08780757191ED04300A355A7 /* InfoPlist.strings in Resources */,
 			);

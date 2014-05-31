@@ -14,8 +14,7 @@ const float Margin = 20.0f;
 
 -(id)initWithSize:(CGSize)size
 {
-    if (self = [super initWithSize:size])
-    {
+    if (self = [super initWithSize:size]) {
         self.astroidCount = 0;
         /* Setup your scene here */
         screenRect = [[UIScreen mainScreen] bounds];
@@ -40,16 +39,10 @@ const float Margin = 20.0f;
     self.physicsWorld.contactDelegate = self;
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    
-    //  SKPhysicsBody objects to hold the passed in objects
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
     SKPhysicsBody *firstBody;
     SKPhysicsBody *secondBody;
-    
-    // The contacts can appear in either order, and so normally you'd need to check
-    // each against the other. In this example, the category types are well ordered, so
-    // the code swaps the two bodies if they are out of order. This allows the code
-    // to only test collisions once.
     
     if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
         firstBody = contact.bodyA;
@@ -65,7 +58,6 @@ const float Margin = 20.0f;
         {
             [self hitAsteroid:(FKAsteroidNode *)secondBody.node withBullet:firstBody.node];
         }
-        
     }
     
     if ((secondBody.categoryBitMask & RBCshipCategory) != 0) {
@@ -74,12 +66,19 @@ const float Margin = 20.0f;
     }
 }
 
-- (void)hitAsteroid:(FKAsteroidNode *)asteroid withBullet:(SKNode*)bullet {
+- (void)hitAsteroid:(FKAsteroidNode *)asteroid withBullet:(SKNode*)bullet
+{
     bullet.physicsBody = nil;
-    //SKEmitterNode *explosion = [self newExplosionNode: 0.1];
-    //explosion.position = bullet.position;
-    //[self addChild:explosion];
+    NSString *burstPath =
+    [[NSBundle mainBundle]
+     pathForResource:@"Explosion" ofType:@"sks"];
+    
+    SKEmitterNode *burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:burstPath];
+    burstNode.numParticlesToEmit = 400;
+    burstNode.position = bullet.position;
+    
     [bullet removeFromParent];
+    [self addChild:burstNode];
     
     asteroid.gone = true;
     
@@ -89,8 +88,7 @@ const float Margin = 20.0f;
 
 - (void)handleTouches:(NSSet *)touches
 {
-    for (UITouch *touch in touches)
-    {
+    for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
         double angle = atan2(location.y-self.player.position.y,location.x-self.player.position.x);
@@ -101,7 +99,8 @@ const float Margin = 20.0f;
     }
 }
 
-- (void)addShip {
+- (void)addShip
+{
     if (self.player) {
         return;
     }
@@ -125,7 +124,8 @@ const float Margin = 20.0f;
     //}
 }
 
-- (void)addAstroids {
+- (void)addAstroids
+{
     while (self.astroidCount < 5) { //self.HUD.level * 2) {
         FKAsteroidNode *asteroid = [FKAsteroidNode newAsteroidWithMass:5];
         asteroid.position = CGPointMake(arc4random_uniform(self.size.width), arc4random_uniform(self.size.height));
@@ -136,14 +136,17 @@ const float Margin = 20.0f;
     }
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [self handleTouches:touches];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [self handleTouches:touches];}
 
--(void)update:(CFTimeInterval)currentTime {
+-(void)update:(CFTimeInterval)currentTime
+{
     [self updateSpritePositions];
     [self.grid updateRays];
     //  Update the score label
@@ -155,7 +158,8 @@ const float Margin = 20.0f;
     //};
 }
 
--(void) splitAsteriod:(FKAsteroidNode *) asteroid {
+-(void) splitAsteriod:(FKAsteroidNode *) asteroid
+{
     if (!asteroid.gone) {
         return;
     }
@@ -181,15 +185,12 @@ const float Margin = 20.0f;
     }
 }
 
-- (void)updateSpritePositions {
+- (void)updateSpritePositions
+{
     
     [self enumerateChildNodesWithName:@"/playObjects/*" usingBlock:^(SKNode *node, BOOL *stop) {
-        
-        //  Get the current possition
         CGPoint nodePosition = CGPointMake(node.position.x, node.position.y);
         
-        
-        //  If we've gone beyond the edge warp to the other side.
         if (nodePosition.x > (CGRectGetMaxX(self.frame) + 20)) {
             node.position = CGPointMake((CGRectGetMinX(self.frame) - 10), nodePosition.y);
         }
@@ -205,7 +206,6 @@ const float Margin = 20.0f;
         if (nodePosition.y < (CGRectGetMinY(self.frame) - 20)) {
             node.position = CGPointMake(nodePosition.x, (CGRectGetMaxY(self.frame) + 10));
         }
-        
     }];
     
     [self enumerateChildNodesWithName:@"/playObjects/asteroid" usingBlock:^(SKNode *node, BOOL *stop) {
