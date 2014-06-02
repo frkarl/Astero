@@ -69,20 +69,17 @@ const float Margin = 20.0f;
 - (void)hitAsteroid:(FKAsteroidNode *)asteroid withBullet:(SKNode*)bullet
 {
     bullet.physicsBody = nil;
-    NSString *burstPath =
-    [[NSBundle mainBundle]
-     pathForResource:@"Explosion" ofType:@"sks"];
+    NSString *burstPath = [[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"sks"];
     
     SKEmitterNode *burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:burstPath];
     burstNode.numParticlesToEmit = 400;
-    burstNode.position = bullet.position;
+    burstNode.position = asteroid.position;
     
     [bullet removeFromParent];
     [self addChild:burstNode];
     
     asteroid.gone = true;
     
-    // Generic rock boom
     //[self runAction:self.rockExplodeSound];
 }
 
@@ -153,9 +150,9 @@ const float Margin = 20.0f;
     //[(SKLabelNode *)[self childNodeWithName:@"HUD/score"] setText: [NSString stringWithFormat:@"Score: %ld", (long)self.HUD.score]];
     
     //  If we are out of rocks it's time for the next level.
-    //if (self.rockCount == 0) {
-    //    [self advanceLevel];
-    //};
+    if (self.astroidCount == 0) {
+        [self addAstroids];
+    };
 }
 
 -(void) splitAsteriod:(FKAsteroidNode *) asteroid
@@ -169,13 +166,13 @@ const float Margin = 20.0f;
     CGFloat angularVelocity = asteroid.physicsBody.angularVelocity;
     CGFloat mass = asteroid.physicsBody.mass;
         
-    //self.rockCount-- ;
+    self.astroidCount-- ;
     [asteroid removeFromParent];
     //self.HUD.score = self.HUD.score + 100;
     if (mass > 1 && mass <= 5) {
         for (NSInteger i = 0; i < 2; i++) {
             FKAsteroidNode *newAsteroid = [FKAsteroidNode newAsteroidWithMass:mass-1];
-            //self.rockCount++;
+            self.astroidCount++;
                 
             newAsteroid.position = position;
             [self.playObjects addChild:newAsteroid];
