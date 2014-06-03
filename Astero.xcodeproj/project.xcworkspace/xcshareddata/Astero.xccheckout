@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EE80CC82-0F63-488A-BC31-2AB564DFD93B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Astero</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AC926024-0E0E-460B-B5AC-2D5AEF061301</key>
+		<string>https://github.com/frkarl/Astero.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Astero.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AC926024-0E0E-460B-B5AC-2D5AEF061301</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/frkarl/Astero.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AC926024-0E0E-460B-B5AC-2D5AEF061301</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AC926024-0E0E-460B-B5AC-2D5AEF061301</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Astero</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -11,6 +11,7 @@
 
 @interface FKShipNode : SKSpriteNode
 @property NSInteger health;
+@property SKAction* shootSound;
 
 + (instancetype)newShipNode;
 

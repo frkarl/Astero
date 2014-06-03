@@ -48,6 +48,7 @@
     
     missile.physicsBody.velocity = CGVectorMake(200*cosf(shipDirection),
                                                 200*sinf(shipDirection));
+    [self runAction:self.shootSound];
 }
 
 - (void)applyDamage:(NSInteger)ammount {
@@ -79,7 +80,7 @@
     
     //    ship.playingSound = NO;
     //    ship.engineNoise = [SKAction playSoundFileNamed:@"RocketThrusters.caf" waitForCompletion:YES];
-    //ship.missileSound = [SKAction playSoundFileNamed:@"boom1.caf" waitForCompletion:YES];
+    ship.shootSound = [SKAction playSoundFileNamed:@"shoot.caf" waitForCompletion:YES];
     //ship.warningSound = [SKAction repeatActionForever:[SKAction playSoundFileNamed:@"alarm.caf" waitForCompletion:NO]];
     
     return ship;
